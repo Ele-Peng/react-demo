@@ -22,7 +22,7 @@ export class Component {
   [RENDER_TO_DOM](range) {
     this._range = range;
     this._vdom = this.vdom;
-    this._vdom()[RENDER_TO_DOM](range);
+    this._vdom[RENDER_TO_DOM](range);
   }
   update() {
     let isSameNode = (oldNode, newNode) => {
@@ -65,7 +65,7 @@ export class Component {
           let range = document.createRange();
           range.setStart(tailRange.endContainer, tailRange.endOffset);
           range.setEnd(tailRange.endContainer, tailRange.endOffset);
-          newChildren[RENDER_TO_DOM](range);
+          newChild[RENDER_TO_DOM](range);
           tailRange = range;
           // TODO
         }
@@ -142,7 +142,6 @@ class ElementWrapper extends Component {
   }
   [RENDER_TO_DOM](range) {
     this._range = range;
-    range.deleteContents();
     let root = document.createElement(this.type);
     for (let name in this.props) {
       let value = this.props[name];
