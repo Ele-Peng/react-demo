@@ -60,6 +60,7 @@ export class Component {
       this.rerender();
       return ;
     }
+    // deepClone
     let merge = (oldState, newState) => {
       for (let p in newState) {
         if (oldState[p] === null || typeof oldState[p] !== "object") {
