@@ -30,6 +30,7 @@ export class Component {
   }
   get root() {
     if (!this._root) {
+      //  执行 MyComponent 的 render 方法，this.render() 执行完，为实体 dom
       this._root = this.render().root;
     }
     return this._root;
@@ -52,7 +53,7 @@ export function createElement(type, attributes, ...children) {
       if (typeof child === "string") {
         child = new TextWrapper(child);
       }
-      if (typeof child === "object" && (child instanceof Array)) {
+      if ((typeof child === "object") && (child instanceof Array)) {
         insertChildren(child);
       } else {
         e.appendChild(child);
